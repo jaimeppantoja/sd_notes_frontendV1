@@ -82,19 +82,19 @@ function App() {
           <div>
             {view === "all" ? (
               <NotesList
-                apiUrl="http://localhost:8080/api/notes/all"
+                apiUrl="https://sd-notes-backend.onrender.com/api/notes/all"
                 title="All Notes"
                 refreshTrigger={refreshTrigger}
               />
             ) : view === "active" ? (
               <NotesList
-                apiUrl="http://localhost:8080/api/notes/active"
+                apiUrl="https://sd-notes-backend.onrender.com/api/notes/active"
                 title="Active Notes"
                 refreshTrigger={refreshTrigger}
               />
             ) : (
               <NotesList
-                apiUrl="http://localhost:8080/api/notes/archived"
+                apiUrl="https://sd-notes-backend.onrender.com/api/notes/archived"
                 title="Archived Notes"
                 refreshTrigger={refreshTrigger}
               />
