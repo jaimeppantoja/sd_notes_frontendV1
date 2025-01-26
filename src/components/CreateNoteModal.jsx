@@ -13,7 +13,7 @@ const CreateNoteModal = ({ isOpen, closeModal, onNoteCreated }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/notes/categories");
+        const response = await axios.get("https://sd-notes-backend.onrender.com/api/notes/categories");
         setExistingCategories(response.data); // Set the existing categories
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -48,7 +48,7 @@ const CreateNoteModal = ({ isOpen, closeModal, onNoteCreated }) => {
     };
 
     try {
-      await axios.post("http://localhost:8080/api/notes", newNote);
+      await axios.post("https://sd-notes-backend.onrender.com/api/notes", newNote);
       onNoteCreated(); // Trigger the refresh
       closeModal(); // Close the modal
       // Reset form fields after note creation
