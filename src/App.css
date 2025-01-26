@@ -1,0 +1,591 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ccdbdc;
+  display: flex;               /* Use flexbox for centering #264653d8*/
+  justify-content: center;     /* Horizontally center all content */
+  align-items: flex-start;     /* Align content to the top */
+  min-height: 100vh;           /* Ensure body spans full viewport height */
+}
+
+header {
+  background-color: #ccdbdc;
+  color: #264653;
+  padding: 1rem;
+  text-align: center;
+
+}
+
+main {
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.75rem;
+  background-color: #972020;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3700b3;
+}
+
+
+/* Add the modal styles here in App.css */
+
+/* Styles for the modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Styles for the modal (popup window) */
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow to give a popup look */
+  animation: modal-popup 0.3s ease-in-out; /* Animation for popup effect */
+  position: relative;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+/* Modal open animation */
+@keyframes modal-popup {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Buttons styling */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #2a9d8f;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: #e76f51;
+  color: white;
+}
+
+/* Prevent the modal from closing when clicking inside the modal */
+.modal .modal {
+  pointer-events: auto;
+}
+
+/* Center the buttons and make them look nice */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Modal categories section*/
+.modal-categories {
+  display: flex;                   /* Enable flexbox */
+  justify-content: space-between;   /* Space out the elements */
+  align-items: center;             /* Vertically center elements */
+  gap: 10px;  
+  margin: 10px;                      /* Optional: add some space between elements */
+}
+
+.modal-categories input {
+  flex: 1;                          /* Allow the input to grow and fill available space */
+  padding: 8px;                     /* Add some padding to the input */
+}
+
+/* Title input and content have the same width */
+.modal-title input,
+.title-content-modal > div textarea {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;               /* Make input and textarea take full width of parent */
+  
+  box-sizing: border-box;    /* Ensure padding doesn't affect width calculation */
+  margin: 5px;
+}
+
+.content-textarea {
+  width: 100%;                 /* Ensure the textarea takes up the full width of its container */
+  max-width: 100%;             /* Ensure the textarea doesn't exceed its parent's width */
+  height: 150px;               /* Optional: Set a fixed height for the textarea */
+  padding: 8px;                /* Add padding for better appearance */
+  font-size: 14px;             /* Font size for text inside the textarea */
+  border: 1px solid #ccc;     /* Border around the textarea */
+  border-radius: 4px;         /* Rounded corners for the textarea */
+  box-sizing: border-box;     /* Ensure padding and border are included in the total width */
+  resize: none;               /* Disable resizing by the user */
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+
+.add-button {
+  /* Optional: Adjust the button's size or other properties */
+  flex-shrink: 0;                   /* Prevent button from shrinking */
+}
+
+.add-button button {
+  padding: 8px 16px;                /* Adjust button padding */
+  background-color: #4CAF50;        /* Example button color */
+  color: white;                     /* Text color */
+  border: none;
+  border-radius: 5px;               /* Optional: round button corners */
+  cursor: pointer;
+  width: 20px;
+}
+
+.add-button button:hover {
+  background-color: #45a049;        /* Darken the button on hover */
+}
+
+
+/* Notes display*/
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Adjust the gap between cards */
+  justify-content: center; /* Centers the cards horizontally */
+  align-items: flex-start; /* Align cards to the top of the container */
+  margin-top: 20px; /* Adds 16px margin to the top */
+}
+
+.note-card {
+  flex: none; /* Prevent the cards from growing or shrinking */
+  width: 220px; /* Fixed width for each card */
+  height: 290px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.note-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  
+ 
+}
+
+.container-title-card {
+  height: 40px; /* Set a fixed height for the container */
+  display: flex; /* Enable flexbox */
+  justify-content: left; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  /* margin: 10px; */
+  
+  padding-top: 20px;
+}
+
+.title-card {
+  margin: 0; /* Remove default margin from h3 */
+}
+
+
+.note-card p {
+  font-size: 12px;
+  margin-bottom: 8px;
+  overflow-y: auto;              /* Enable vertical scrolling if content exceeds max-height */
+  overflow-x: hidden;            /* Prevent horizontal overflow */
+  word-wrap: break-word;         /* Ensure words break when they overflow */
+  white-space: normal;           /* Allow wrapping of long lines */
+}
+
+.archive-info {
+  display: flex;                 /* Enable flexbox */
+  align-items: center;           /* Vertically center items */
+  gap: 10px;                     /* Optional: add space between the checkbox and text */
+}
+
+.archive-info label {
+  display: flex;                 /* Make the label a flex container */
+  align-items: center;           /* Center the checkbox and text vertically */
+  gap: 5px;  
+  font-size: 12px;                    /* Optional: add space between the checkbox and the text */
+}
+
+#card-content {
+ 
+  height: 80px;
+  overflow-y: auto;              /* Enable vertical scrolling if content exceeds max-height */
+  overflow-x: hidden;            /* Prevent horizontal overflow */
+  word-wrap: break-word;         /* Ensure words break when they overflow */
+  white-space: normal;           /* Allow wrapping of long lines */
+  font-size: 12px;
+}
+
+
+/* View Buttons */
+
+.view-buttons {
+  
+  display: flex;
+  justify-content: space-evenly;  /* Distribute the buttons evenly with space between them */
+  align-items: center;           /* Center the buttons vertically */
+  flex-wrap: wrap;               /* Allow the buttons to wrap when space is tight */
+  gap: 10px;                     /* Add space between buttons */
+  margin-top: 16px 0px;             /* Optional: margin on top */  
+}
+
+.view-buttons button {
+  width: 150px;
+  padding: 10px 20px; /* Button padding */
+  background-color: #f4a261; /* Button background color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 50px; /* Rounded corners */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Button hover effect */
+.view-buttons button:hover {
+  background-color: #e76f51; /* Darker shade on hover */
+}
+
+/* Active button style */
+
+.view-buttons button.active {
+  background-color: #e76f51; /* Darker shade for the active button */
+  font-weight: bold; /* Make the active button text bold */
+  border: 2px solid #e76f51; /* Add a border with a light blue color */
+  outline: none; /* Remove any default outline */
+}
+
+/* Main Button */
+
+.main-button button {
+  width: 150px;
+  padding: 10px 20px;             /* Add padding to the button */
+  background-color: #2a9d8f;      /* Set background color */
+  color: white;                  /* Text color */
+  border: none;                  /* Remove the default border */
+  border-radius: 50px;            /* Slightly rounded corners */
+  font-size: 16px;               /* Set the font size */
+  cursor: pointer;               /* Pointer cursor on hover */
+  transition: all 0.3s ease;     /* Smooth transition for background and border */
+  
+}
+
+.main-button button:hover {
+  background-color: #264653;     /* Change background color on hover */
+}
+
+.main-button button:focus {
+  outline: none;                 /* Remove default focus outline */
+  box-shadow: 0 0 0 2px #2aecec; /* Optional: add focus effect */
+}
+
+
+.main-button {
+  
+  display: flex;              /* Enable flexbox for centering */
+  justify-content: center;    /* Center horizontally */
+  align-items: center;        /* Center vertically */
+  margin-top: 20px;           /* Optional: Add spacing above the button */
+  margin-bottom: 20px;        /* Optional: Add spacing below the button */
+  
+  
+}
+
+
+/* Title Notes */
+
+.title-notes {
+  display: flex;                    /* Enables Flexbox */
+  justify-content: center;          /* Centers the elements horizontally */
+  align-items: center;              /* Centers the elements vertically */
+  gap: 16px;                        /* Adds space between the elements */
+  margin-top: 20px;                 /* Adds margin at the top */
+  margin-bottom: 20px;              /* Adds margin at the bottom */
+}
+
+.title-notes h2 {
+  margin: 0;                         /* Remove default margin from the title */
+}
+
+.title-notes select {
+  padding: 8px;                      /* Add some padding to the select element */
+  font-size: 16px;                   /* Make the font size more readable */
+}
+
+/*Card Buttons*/
+
+/* Edit button */
+.edit-button {
+  width: 70px;
+  background-color: #2a9d8f; /* Green background */
+  color: white;             /* White text */
+  border: none;             /* Remove border */
+  padding: 8px 12px;        /* Add some padding */
+  font-size: 14px;          /* Adjust font size */
+  cursor: pointer;          /* Pointer cursor for better UX */
+  border-radius: 50px;       /* Optional: Rounded corners */
+}
+
+.edit-button:hover {
+  background-color: #1b6159; /* Slightly darker green on hover */
+}
+
+/* Target the Delete button */
+.delete-button {
+  width: 70px;
+  background-color: #e76f51; /* Green background */
+  color: white;             /* White text */
+  border: none;             /* Remove border */
+  padding: 8px 12px;        /* Add some padding */
+  font-size: 14px;          /* Adjust font size */
+  cursor: pointer;          /* Pointer cursor for better UX */
+  border-radius: 50px;       /* Optional: Rounded corners */
+}
+
+.delete-button:hover {
+  background-color: #a4503b; /* Slightly darker green on hover */
+}
+
+.card-buttons {
+  display: flex;                 /* Enable flexbox for layout */
+  justify-content: space-between; /* Spread the buttons evenly */
+  gap: 10px;                     /* Add space between buttons */
+  margin-top: 10px;              /* Add spacing above the buttons */
+}
+
+/* Modal Buttons Creat*/
+
+/* Style the container for the buttons */
+.modal-buttons-create {
+  
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Common styles for both buttons */
+.modal-buttons-create button {
+  padding: 10px 20px;           /* Add padding for a larger clickable area */
+  font-size: 16px;              /* Set a comfortable font size */
+  border: none;                 /* Remove default border */
+  border-radius: 8px;           /* Add rounded corners */
+  cursor: pointer;              /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Save button styles */
+.modal-buttons-create button[type="submit"] {
+  background-color: #2a9d8f;    /* Green background for save button */
+  color: white;                 /* White text */
+}
+
+.modal-buttons-create button[type="submit"]:hover {
+  background-color: #164f48;    /* Darker green on hover */
+}
+
+/* Cancel button styles */
+.modal-buttons-create button[type="button"] {
+  background-color: #e76f51;    /* Red background for cancel button */
+  color: white;                 /* White text */
+}
+
+.modal-buttons-create button[type="button"]:hover {
+  background-color: #954936;    /* Darker red on hover */
+}
+
+/* Modal buttons*/
+
+/* Targeting the button inside .add-button div */
+.add-button button {
+  width: 90px;
+  background-color: #2a9d8f;    /* Green background */
+  color: white;                 /* White text */
+  border: none;                 /* Remove default border */
+  padding: 10px 20px;           /* Larger padding for a bigger button */
+  font-size: 12px;              /* Regular font size */
+  border-radius: 50px;           /* Slightly rounded corners */
+  cursor: pointer;             /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.add-button button:hover {
+  background-color: #45a049;    /* Darker green on hover */
+}
+
+/* Targeting the button inside .close-button div */
+
+.close-button button {
+  width: 15px;                /* Set width */
+  height: 15px;               /* Set height to the same value */
+  background-color: #ffffff;  /* Red background */
+  color: rgb(247, 5, 5);               /* White text */
+  border: none;               /* Remove default border */
+  padding: 0;                 /* No padding, because width and height are set */
+  font-size: 10px;            /* Font size for the text */
+  border-radius: 50%;         /* Circular button */
+  cursor: pointer;           /* Pointer cursor on hover */
+  display: flex;              /* Use flexbox to center the text */
+  justify-content: center;    /* Center text horizontally */
+  align-items: center;        /* Center text vertically */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  font-weight: bolder;
+}
+
+
+.close-button button:hover {
+  background-color: #e53935;    /* Darker red on hover */
+}
+
+/* Modal Selected Categories*/
+
+.category-container {
+  display: flex;                /* Enable flexbox */
+  align-items: center;          /* Align items vertically at the center */
+  gap: 8px;                     /* Add some space between the category and the button */
+  font-size: 12px;
+}
+
+/* Styling Login*/
+
+.login-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.login-container h2 {
+  text-align: center;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  margin-bottom: 5px;
+}
+
+.login-container input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+/* Logout-button div */
+.logout-button {
+  display: flex; /* Enable Flexbox */
+  justify-content: flex-end; /* Align the button to the left */
+  margin-top: 5px; /* Add some space above the button */
+}
+
+/* Target the button inside logout-button */
+.logout-button button {
+  background-color: #ff4d4d; /* Set background color to red */
+  color: white; /* Set text color to white */
+  border: none; /* Remove the border */
+  padding: 5px 10px; /* Add padding to the button */
+  border-radius: 50px; /* Add rounded corners */
+  cursor: pointer; /* Change cursor to pointer when hovering */
+  font-size: 10px; /* Set the font size */
+  transition: background-color 0.3s; /* Add a smooth transition for background color */
+  font-weight: bold;
+}
+
+/* Add a hover effect to change the background color */
+.logout-button button:hover {
+  background-color: #ff1a1a; /* Darker red when hovered */
+}
+
+
+
+
+
+
