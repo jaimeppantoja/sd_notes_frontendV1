@@ -27,7 +27,7 @@ const NotesList = ({ apiUrl, title, refreshTrigger, view }) => {
   // Function to fetch available categories
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/notes/categories");
+      const response = await axios.get("https://sd-notes-backend.onrender.com/api/notes/categories");
       setCategories(response.data);
     } catch (err) {
       console.error("Error fetching categories:", err);
@@ -50,7 +50,7 @@ const NotesList = ({ apiUrl, title, refreshTrigger, view }) => {
   // Function to handle archiving/unarchiving a note
   const handleArchiveToggle = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:8080/api/notes/${id}/archive`);
+      const response = await axios.patch(`https://sd-notes-backend.onrender.com/api/notes/${id}/archive`);
       const updatedNotes = notes.map((note) =>
         note.id === id ? { ...note, archived: response.data.archived } : note
       );
@@ -63,7 +63,7 @@ const NotesList = ({ apiUrl, title, refreshTrigger, view }) => {
 // Function to handle deleting a note
     const handleDelete = async (id) => {
         try {
-        await axios.delete(`http://localhost:8080/api/notes/${id}`);
+        await axios.delete(`https://sd-notes-backend.onrender.com/api/notes/${id}`);
         const updatedNotes = notes.filter((note) => note.id !== id);
         setNotes(updatedNotes);
         
