@@ -13,7 +13,7 @@ const EditNoteModal = ({ isOpen, closeModal, noteData, onNoteUpdated }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/notes/categories");
+        const response = await axios.get("https://sd-notes-backend.onrender.com/api/notes/categories");
         setExistingCategories(response.data); // Set the existing categories
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -52,7 +52,7 @@ const EditNoteModal = ({ isOpen, closeModal, noteData, onNoteUpdated }) => {
     };
 
     try {
-      await axios.put(`http://localhost:8080/api/notes/${noteData.id}`, updatedNote);
+      await axios.put(`https://sd-notes-backend.onrender.com/api/notes/${noteData.id}`, updatedNote);
       onNoteUpdated(); // Trigger refresh after updating
       closeModal(); // Close the modal
     } catch (error) {
