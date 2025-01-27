@@ -112,6 +112,7 @@ const CreateNoteModal = ({ isOpen, closeModal, onNoteCreated }) => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
+              maxLength={250}
             />
           </div>
           
