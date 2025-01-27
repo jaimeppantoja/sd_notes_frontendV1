@@ -247,6 +247,10 @@ label {
 
 .title-card {
   margin: 0; /* Remove default margin from h3 */
+  white-space: normal; /* Allow the text to wrap */
+  word-wrap: break-word; /* Break long words if needed */
+  overflow-wrap: break-word; /* Ensure long words wrap in modern browsers */
+  width: 100%; /* Ensure the text fits within the container's width */
 }
 
 
