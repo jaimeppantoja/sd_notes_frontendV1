@@ -109,6 +109,7 @@ const EditNoteModal = ({ isOpen, closeModal, noteData, onNoteUpdated }) => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
+              maxLength={250}
             />
           </div>
           <div>
