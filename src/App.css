@@ -283,7 +283,7 @@ label {
   overflow-y: auto;              /* Enable vertical scrolling if content exceeds max-height */
   overflow-x: hidden;            /* Prevent horizontal overflow */
   word-wrap: break-word;         /* Ensure words break when they overflow */
-  white-space: normal;           /* Allow wrapping of long lines */
+  white-space: pre-wrap;           /* Allow wrapping of long lines */
   font-size: 12px;
 }
 
