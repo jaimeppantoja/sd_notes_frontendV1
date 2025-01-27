@@ -177,6 +177,7 @@ button:hover {
   border-radius: 4px;         /* Rounded corners for the textarea */
   box-sizing: border-box;     /* Ensure padding and border are included in the total width */
   resize: none;               /* Disable resizing by the user */
+  white-space: pre-wrap;
 }
 
 label {
